@@ -1,172 +1,190 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Pastel Portfolio Resume</title>
-
-<!-- Bootstrap 5 -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<title>Momoluca.id - Eksplorasi Moluska</title>
 
 <!-- Google Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Pacifico&family=Montserrat:wght@600;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-<!-- jQuery -->
-<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<!-- Bootstrap -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Bootstrap Icons -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
+<!-- Swiper -->
+<link href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" rel="stylesheet">
+
+<!-- AOS -->
+<link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
 
 <style>
 
+:root{
+--navy:#081c3a;
+--deep:#0f2f6b;
+--electric:#1e90ff;
+--white:#f4f7ff;
+}
+
 body{
-    background:#f0f2f5;
-    font-family:'Poppins',sans-serif;
+font-family:'Poppins',sans-serif;
+background:linear-gradient(180deg,#081c3a,#020b1f);
+color:white;
+overflow-x:hidden;
 }
 
-/* MAIN CARD */
-
-.main-card{
-    max-width:900px;
-    margin:50px auto;
-    background:#fff;
-    padding:40px;
-    border-radius:20px;
-    box-shadow:0 10px 30px rgba(0,0,0,0.1);
-    position:relative;
-    overflow:hidden;
-    transition:0.3s;
+/* glass */
+.glass{
+background:rgba(255,255,255,0.08);
+backdrop-filter:blur(10px);
+border-radius:25px;
+box-shadow:0 0 20px rgba(30,144,255,0.2);
 }
 
-.main-card:hover{
-    box-shadow:0 20px 50px rgba(0,0,0,0.15);
+/* glow */
+.glow{
+box-shadow:0 0 25px rgba(30,144,255,0.6);
 }
 
-/* HEADER */
-
-.header{
-    text-align:center;
-    position:relative;
-    margin-bottom:50px;
+/* NAV ICON */
+.nav-icons{
+position:fixed;
+top:20px;
+right:20px;
+z-index:999;
+display:flex;
+gap:10px;
 }
 
-.title{
-    font-family:'Montserrat',sans-serif;
-    font-size:48px;
-    font-weight:800;
-    color:#333;
+.nav-icons a{
+width:45px;
+height:45px;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+background:rgba(255,255,255,0.1);
+color:white;
+font-size:18px;
+transition:0.3s;
 }
 
-.subtitle{
-    color:#a084dc;
+.nav-icons a:hover{
+background:var(--electric);
+box-shadow:0 0 20px var(--electric);
 }
 
-/* HELLO TITLE */
-
-.hello{
-    font-family:'Pacifico',cursive;
-    color:#ff7eb9;
-    font-size:42px;
+/* HERO */
+.hero{
+padding:100px 0;
 }
 
-/* PROFILE IMAGE */
-
-.profile-img{
-    width:220px;
-    border-radius:15px;
-    box-shadow:0 10px 25px rgba(0,0,0,0.15);
+.hero-container{
+padding:60px;
+border-radius:30px;
+background:linear-gradient(135deg,#081c3a,#0f2f6b);
+position:relative;
+overflow:hidden;
 }
 
-/* SECTION TITLE */
+.hero img{
+max-width:100%;
+opacity:0.85;
+filter:drop-shadow(0 0 40px #1e90ff);
+}
 
+.cta-btn{
+background:var(--electric);
+border:none;
+padding:12px 30px;
+border-radius:50px;
+color:white;
+transition:0.3s;
+}
+
+.cta-btn:hover{
+box-shadow:0 0 20px var(--electric);
+transform:scale(1.05);
+}
+
+/* classification */
 .section-title{
-    font-family:'Pacifico';
-    font-size:40px;
-    color:#ff7eb9;
-    margin:40px 0 20px;
+text-align:center;
+font-size:32px;
+font-weight:700;
+margin-bottom:40px;
+background:linear-gradient(90deg,#1e90ff,#6fbfff);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
 }
 
-/* SUB TITLE */
-
-.sub-title{
-    font-weight:600;
-    color:#a084dc;
-    margin-top:20px;
+.class-card{
+padding:25px;
+border-radius:20px;
+background:white;
+color:#081c3a;
+transition:0.3s;
 }
 
-/* CONTACT */
-
-.contact-item{
-    margin-bottom:8px;
+.class-card.active{
+background:linear-gradient(135deg,#1e90ff,#0f2f6b);
+color:white;
 }
 
-.contact-icon{
-    margin-right:10px;
+.class-card:hover{
+transform:scale(1.07);
+box-shadow:0 0 25px rgba(30,144,255,0.5);
 }
 
-/* PROGRESS BAR */
-
-.progress{
-    height:10px;
-    border-radius:20px;
-    background:#eee;
+/* ubur section */
+.info-card{
+padding:25px;
+background:linear-gradient(135deg,#0f2f6b,#081c3a);
+border-radius:25px;
+position:relative;
+overflow:hidden;
 }
 
-.progress-bar{
-    background:#ff7eb9;
+.pill{
+background:rgba(255,255,255,0.1);
+border:none;
+padding:8px 20px;
+border-radius:50px;
+color:white;
+margin:5px;
 }
 
-/* STICKERS */
-
-.sticker{
-    position:absolute;
-    font-size:30px;
-    opacity:0.8;
-    transition:0.3s;
+/* swiper */
+.swiper{
+padding:60px 0;
 }
 
-.sticker:hover{
-    transform:scale(1.2) rotate(10deg);
+.species-card{
+background:linear-gradient(135deg,#1e90ff,#0f2f6b);
+padding:30px;
+border-radius:25px;
+text-align:center;
+transition:0.3s;
 }
 
-/* RANDOM POSITIONS */
-
-.sticker1{
-    top:10px;
-    left:20px;
+.species-card:hover{
+transform:scale(1.05);
 }
 
-.sticker2{
-    top:30px;
-    right:30px;
+/* footer */
+footer{
+background:#020b1f;
+padding:60px 0;
+margin-top:80px;
 }
 
-.sticker3{
-    bottom:50px;
-    left:10px;
-}
-
-.sticker4{
-    bottom:30px;
-    right:20px;
-}
-
-/* FADE EFFECT */
-
-.fade-section{
-    display:none;
-}
-
-/* RESPONSIVE */
-
-@media(max-width:768px){
-
-    .profile-img{
-        margin-bottom:20px;
-    }
-
-    .hello{
-        text-align:center;
-    }
-
+.footer-box{
+background:rgba(255,255,255,0.05);
+padding:20px;
+border-radius:20px;
 }
 
 </style>
@@ -174,213 +192,243 @@ body{
 </head>
 <body>
 
-<div class="main-card">
+<!-- NAV ICON -->
+<div class="nav-icons">
+<a href="#"><i class="bi bi-house"></i></a>
+<a href="#"><i class="bi bi-telegram"></i></a>
+<a href="#"><i class="bi bi-instagram"></i></a>
+<a href="#"><i class="bi bi-person"></i></a>
+</div>
 
-    <!-- Stickers -->
-    <div class="sticker sticker1">⭐</div>
-    <div class="sticker sticker2">💛</div>
-    <div class="sticker sticker3">⚡</div>
-    <div class="sticker sticker4">🌸</div>
+<!-- HERO -->
+<section class="hero container">
+<div class="hero-container glass">
+<div class="row align-items-center">
 
-    <!-- HEADER -->
-    <div class="header fade-section">
+<div class="col-md-6" data-aos="fade-right">
+<h6>Momoluca.id</h6>
+<h1 class="fw-bold">Selami Dunia Menakjubkan Molusca Laut</h1>
 
-        <div class="title">PORTFOLIO</div>
-        <div class="subtitle">Creative Resume 2026</div>
+<p>
+Eksplorasi interaktif dunia moluska dan ubur-ubur dengan visual modern, informasi ilmiah, dan pengalaman edukasi mendalam.
+</p>
 
-    </div>
+<button class="cta-btn">Jelajahi Sekarang</button>
+</div>
 
+<div class="col-md-6 text-center" data-aos="fade-left">
+<img src="https://pngimg.com/uploads/jellyfish/jellyfish_PNG71356.png">
+</div>
 
-    <!-- PROFILE SECTION -->
+</div>
+</div>
+</section>
 
-    <div class="row align-items-center fade-section">
+<!-- KLASIFIKASI -->
+<section class="container">
+<h2 class="section-title">Klasifikasi Utama</h2>
 
-        <div class="col-md-4 col-12 text-center">
+<div class="row g-4">
 
-            <img src="https://via.placeholder.com/220" class="profile-img">
+<div class="col-md-3">
+<div class="class-card">
+<h5>Cephalopoda</h5>
+<p>Cumi dan gurita dengan kecerdasan tinggi.</p>
+</div>
+</div>
 
-        </div>
+<div class="col-md-3">
+<div class="class-card active">
+<h5>Cnidaria</h5>
+<p>Termasuk ubur-ubur dengan sel penyengat.</p>
+</div>
+</div>
 
-        <div class="col-md-8 col-12">
+<div class="col-md-3">
+<div class="class-card">
+<h5>Gastropoda</h5>
+<p>Siput laut dengan cangkang unik.</p>
+</div>
+</div>
 
-            <div class="hello">Hello</div>
+<div class="col-md-3">
+<div class="class-card">
+<h5>Bivalvia</h5>
+<p>Kerang dengan dua cangkang simetris.</p>
+</div>
+</div>
 
-            <p>
-                I am a creative designer passionate about aesthetic web design,
-                infographic layout, and modern digital experiences.
-                I love creating playful, engaging, and meaningful visual content.
-            </p>
+</div>
+</section>
 
-            <!-- CONTACT -->
+<!-- UBUR SECTION -->
+<section class="container mt-5">
+<div class="row align-items-center">
 
-            <div class="contact-item">
-                📧 email@email.com
-            </div>
+<div class="col-md-6" data-aos="fade-right">
 
-            <div class="contact-item">
-                📱 +62 812 3456 7890
-            </div>
+<h2 class="fw-bold">Ubur-Ubur</h2>
 
-            <div class="contact-item">
-                🌐 yourwebsite.com
-            </div>
+<p>
+Ubur-ubur adalah hewan laut transparan dari filum Cnidaria. Mereka memiliki tentakel yang digunakan untuk menangkap mangsa dan mempertahankan diri.
+</p>
 
-            <div class="contact-item">
-                📍 Indonesia
-            </div>
-
-        </div>
-
-    </div>
-
-
-    <!-- RESUME TITLE -->
-
-    <div class="section-title fade-section">Resume</div>
-
-
-    <!-- RESUME SECTION -->
-
-    <div class="row fade-section">
-
-        <!-- LEFT -->
-
-        <div class="col-md-6 col-12">
-
-            <!-- EDUCATION -->
-
-            <div class="sub-title">🎓 Education</div>
-
-            <p>
-                Bachelor of Information Systems<br>
-                University Name<br>
-                2020 - 2024
-            </p>
-
-            <!-- EXPERIENCE -->
-
-            <div class="sub-title">💼 Experience</div>
-
-            <p>
-                Web Designer<br>
-                Creative Studio<br>
-                2024 - Present
-            </p>
-
-            <p>
-                Graphic Designer<br>
-                Digital Agency<br>
-                2022 - 2024
-            </p>
-
-        </div>
-
-
-        <!-- RIGHT -->
-
-        <div class="col-md-6 col-12">
-
-            <!-- LANGUAGES -->
-
-            <div class="sub-title">🌎 Languages</div>
-
-            English
-            <div class="progress mb-2">
-                <div class="progress-bar" style="width:90%"></div>
-            </div>
-
-            Indonesian
-            <div class="progress mb-2">
-                <div class="progress-bar" style="width:100%"></div>
-            </div>
-
-            Japanese
-            <div class="progress mb-2">
-                <div class="progress-bar" style="width:50%"></div>
-            </div>
-
-
-            <!-- SKILLS -->
-
-            <div class="sub-title">✨ Skills</div>
-
-            Design
-            <div class="progress mb-2">
-                <div class="progress-bar" style="width:95%"></div>
-            </div>
-
-            Creativity
-            <div class="progress mb-2">
-                <div class="progress-bar" style="width:90%"></div>
-            </div>
-
-            Communication
-            <div class="progress mb-2">
-                <div class="progress-bar" style="width:85%"></div>
-            </div>
-
-
-            <!-- SOFTWARE -->
-
-            <div class="sub-title">💻 Software</div>
-
-            Figma
-            <div class="progress mb-2">
-                <div class="progress-bar" style="width:95%"></div>
-            </div>
-
-            Photoshop
-            <div class="progress mb-2">
-                <div class="progress-bar" style="width:80%"></div>
-            </div>
-
-            Canva
-            <div class="progress mb-2">
-                <div class="progress-bar" style="width:90%"></div>
-            </div>
-
-        </div>
-
-    </div>
+<button class="pill">Klasifikasi</button>
+<button class="pill">Pengertian</button>
+<button class="pill">Jenis-Jenis</button>
 
 </div>
 
+<div class="col-md-6" data-aos="fade-left">
+
+<div class="info-card glass">
+
+<h5>Box Jellyfish</h5>
+<p>Salah satu ubur-ubur paling berbahaya di dunia.</p>
+
+<hr>
+
+<h5>Moon Jellyfish</h5>
+<p>Spesies ubur-ubur transparan yang indah.</p>
+
+<button class="cta-btn mt-3">Jelajahi</button>
+
+</div>
+
+</div>
+
+</div>
+</section>
+
+<!-- SWIPER -->
+<section class="container">
+
+<div class="swiper">
+<div class="swiper-wrapper">
+
+<div class="swiper-slide">
+<div class="species-card">
+<h4>Moon Jellyfish</h4>
+<p>Aurelia aurita</p>
+<button class="cta-btn">Jelajahi</button>
+</div>
+</div>
+
+<div class="swiper-slide">
+<div class="species-card">
+<h4>Box Jellyfish</h4>
+<p>Chironex fleckeri</p>
+<button class="cta-btn">Jelajahi</button>
+</div>
+</div>
+
+<div class="swiper-slide">
+<div class="species-card">
+<h4>Lion Mane</h4>
+<p>Cyanea capillata</p>
+<button class="cta-btn">Jelajahi</button>
+</div>
+</div>
+
+<div class="swiper-slide">
+<div class="species-card">
+<h4>Crystal Jelly</h4>
+<p>Aequorea victoria</p>
+<button class="cta-btn">Jelajahi</button>
+</div>
+</div>
+
+</div>
+
+<div class="swiper-pagination"></div>
+
+</div>
+
+</section>
+
+<!-- FOOTER -->
+<footer>
+
+<div class="container text-center">
+
+<h2 class="mb-4">Momoluca.id</h2>
+
+<div class="row g-4">
+
+<div class="col-md-4">
+<div class="footer-box">
+01 Get to know us
+</div>
+</div>
+
+<div class="col-md-4">
+<div class="footer-box">
+02 Part of Ruang Edit
+</div>
+</div>
+
+<div class="col-md-4">
+<div class="footer-box">
+03 Created by You
+</div>
+</div>
+
+</div>
+
+</div>
+
+</footer>
+
+
+<!-- JS -->
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
 
 <script>
 
-/* FADE IN ANIMATION */
+AOS.init();
 
-$(document).ready(function(){
+new Swiper('.swiper', {
 
-    $(".fade-section").each(function(i){
+slidesPerView:3,
+spaceBetween:30,
+centeredSlides:true,
 
-        $(this).delay(300*i).fadeIn(800);
+pagination:{
+el:'.swiper-pagination',
+clickable:true
+},
 
-    });
+breakpoints:{
+0:{slidesPerView:1},
+768:{slidesPerView:2},
+1024:{slidesPerView:3}
+}
 
 });
 
+// hover effect jquery
+$('.class-card').hover(function(){
+$(this).css('transform','scale(1.07)');
+},function(){
+$(this).css('transform','scale(1)');
+});
 
-/* FLOATING STICKER ANIMATION */
-
-setInterval(function(){
-
-    $(".sticker").each(function(){
-
-        var random = Math.random()*10;
-
-        $(this).css({
-
-            transform:"translateY("+random+"px) rotate("+random+"deg)"
-
-        });
-
-    });
-
-},2000);
+// smooth scroll
+$('a').click(function(e){
+e.preventDefault();
+$('html,body').animate({
+scrollTop:0
+},500);
+});
 
 </script>
-
 
 </body>
 </html>
